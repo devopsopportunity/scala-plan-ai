@@ -1,0 +1,19 @@
+@()
+
+<head>
+  <link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/styles.css")">
+</head>
+
+@main("Welcome to Play") {
+  <h1>Scala Plan AI</h1>
+  <p>Benvenuto nel mio primo progetto Play Framework con Scala!</p>
+  <p><a href="@routes.HomeController.about()">About</a></p>
+}
+@main("Menu") {
+  <h1>Menu</h1>
+  <ul>
+      <li><a href="/log-passati">Log Passati</a></li>
+      <li><a href="/log-corrente">Log Corrente</a></li>
+      <li><a href="/log-futuri">Log Futuri</a></li>
+  </ul>
+}

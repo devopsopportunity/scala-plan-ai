@@ -1,0 +1,24 @@
+@main("Log Corrente") {
+    <p><a href="@routes.HomeController.menu()">Menu</a></p>
+    <h1>Log Corrente</h1>
+    <p>Qui ci saranno le attività correnti del giorno: @java.time.LocalDate.now()</p>
+    
+    <!-- Lista organizzativa -->
+    <ul>
+        <li>📝 Pianificare la giornata</li>
+        <li>💻 Lavorare su Scala</li>
+        <li>🍴 Pranzo alle 12:30</li>
+        <li>🏃‍♂️ Fare una passeggiata nel pomeriggio</li>
+        <li>🌙 Riflettere sui progressi della giornata</li>
+    </ul>
+    
+    <!-- Bottone con evento alert -->
+    <button id="addButton">Aggiungi attività</button>
+
+    <script>
+        // Script per gestire il clic del bottone
+        document.getElementById('addButton').addEventListener('click', function() {
+            alert('add');
+        });
+    </script>
+}

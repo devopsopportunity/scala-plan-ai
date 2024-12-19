@@ -1,0 +1,11 @@
+<head>
+    <link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/styles.css")">
+</head>
+  
+@main("About") {
+    <h1>Informazioni su questo progetto</h1>
+    <p>Questa è una semplice applicazione Play Framework creata con Scala.</p>
+    <!-- Aggiungi l'immagine del caminetto natalizio -->
+    <img class="camino-natalizio" src="@routes.Assets.versioned("images/camino_natalizio.png")" alt="Caminetto Natalizio" />
+    <p><a href="@routes.HomeController.index()">Torna indietro alla home</a></p>
+}
