@@ -2,23 +2,133 @@
     <p><a href="@routes.HomeController.menu()">Menu</a></p>
     <h1>Log Corrente</h1>
     <p>Qui ci saranno le attività correnti del giorno: @java.time.LocalDate.now()</p>
-    
+
     <!-- Lista organizzativa -->
-    <ul>
-        <li>📝 Pianificare la giornata</li>
-        <li>💻 Lavorare su Scala</li>
-        <li>🍴 Pranzo alle 12:30</li>
-        <li>🏃‍♂️ Fare una passeggiata nel pomeriggio</li>
-        <li>🌙 Riflettere sui progressi della giornata</li>
-    </ul>
-    
+    <!-- Contenitore per mostrare l'opzione selezionata -->
+    <p id="selectedItem">Nessuna opzione selezionata.</p>
+    <ul id="activityList">
+        <li class="list-item">💻 <span class="timestamp" id="time-1">09:00</span> Lavorare su Scala</li>
+    </ul>    
+
     <!-- Bottone con evento alert -->
-    <button id="addButton">Aggiungi attività</button>
+    <button id="openPopup">Aggiungi attività</button>
+
+    <!-- Popup -->
+    <div id="myPopup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>Aggiungi una nuova attività</h2>
+
+            <!-- Input per nuova attività -->
+            <input type="text" id="newActivity" placeholder="Descrivi l'attività...">
+            <button id="addActivity">Aggiungi</button>
+
+            <!-- Lista popup -->
+            <ul id="itemList">
+                <li class="list-item">📝 Pianificare la giornata</li>
+                <li class="list-item">💻 Lavorare su Scala</li>
+                <li class="list-item">🍴 Pranzo alle 12:30</li>
+                <li class="list-item">🏃‍♂️ Fare una passeggiata nel pomeriggio</li>
+                <li class="list-item">🌙 Riflettere sui progressi della giornata</li>
+            </ul>
+        </div>
+    </div>
 
     <script>
-        // Script per gestire il clic del bottone
-        document.getElementById('addButton').addEventListener('click', function() {
-            alert('add');
+        document.addEventListener("DOMContentLoaded", function () {
+            var popup = document.getElementById("myPopup");
+            var btn = document.getElementById("openPopup");
+            var span = document.getElementsByClassName("close")[0];
+            var addButton = document.getElementById("addActivity");
+            var newActivityInput = document.getElementById("newActivity");
+            var activityList = document.getElementById("activityList");
+            var selectedItem = document.getElementById("selectedItem");
+            var itemList = document.getElementById("itemList");
+
+            // Mostra la popup
+            btn.onclick = function () {
+                popup.style.display = "block";
+            };
+
+            // Chiudi la popup
+            span.onclick = function () {
+                popup.style.display = "none";
+            };
+
+            // Chiudi cliccando fuori dalla popup
+            window.onclick = function (event) {
+                if (event.target == popup) {
+                    popup.style.display = "none";
+                }
+            };
+
+            // Aggiungi una nuova attività alla lista
+            addButton.onclick = function () {
+                var newActivity = newActivityInput.value.trim();
+                if (newActivity) {
+                    // Ottieni l'orario corrente
+                    var now = new Date();
+                    var hours = now.getHours();
+                    var minutes = now.getMinutes();
+                    var time = hours + ":" + (minutes < 10 ? "0" + minutes : minutes);
+
+                    // Aggiungi l'emoji in base al tipo di attività
+                    var emoji = "📝"; // Default emoji, puoi aggiungere altre logiche per cambiare emoji
+
+                    // Crea un nuovo elemento <li>
+                    var newListItem = document.createElement("li");
+                    newListItem.innerHTML = emoji + " <span class='timestamp'>" + time + "</span> " + newActivity;
+
+                    // Rendi l'elemento modificabile
+                    newListItem.setAttribute("contenteditable", "true");
+
+                    // Aggiungi l'elemento alla lista principale
+                    activityList.appendChild(newListItem);
+
+                    // Resetta l'input
+                    newActivityInput.value = "";
+
+                    // Chiudi la popup
+                    popup.style.display = "none";
+                } else {
+                    alert("Per favore, inserisci un'attività valida.");
+                }
+            };
+
+            // Gestire il click sugli item della lista popup
+            itemList.addEventListener("click", function (event) {
+                if (event.target && event.target.matches("li.list-item")) {
+                    // Cambia il contenuto di #selectedItem
+                    selectedItem.textContent = "Opzione selezionata: " + event.target.textContent;
+
+                    // Ottieni l'orario corrente
+                    var now = new Date();
+                    var hours = now.getHours();
+                    var minutes = now.getMinutes();
+                    var time = hours + ":" + (minutes < 10 ? "0" + minutes : minutes);
+
+                    // Aggiungi l'emoji in base all'item selezionato
+                    var emoji = event.target.innerHTML.split(" ")[0]; // Prende l'emoji dall'elemento selezionato
+
+                    // Aggiungi il nuovo item alla lista principale
+                    var newListItem = document.createElement("li");
+                    newListItem.innerHTML = emoji + " <span class='timestamp'>" + time + "</span> " + event.target.textContent.slice(2);
+
+                    // Rendi l'elemento modificabile
+                    newListItem.setAttribute("contenteditable", "true");
+
+                    // Aggiungi l'elemento alla lista principale
+                    activityList.appendChild(newListItem);
+                }
+            });
+
+            // Gestire il click sugli item della lista principale (attività correnti)
+            activityList.addEventListener("click", function (event) {
+                if (event.target && event.target.matches("li")) {
+                    // Cambia il contenuto di #selectedItem
+                    selectedItem.textContent = "Opzione selezionata: " + event.target.textContent;
+                }
+            });
         });
     </script>
 }

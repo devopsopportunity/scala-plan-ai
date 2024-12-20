@@ -8,6 +8,16 @@
   <h1>Scala Plan AI</h1>
   <p>Benvenuto nel mio primo progetto Play Framework con Scala!</p>
   <p><a href="@routes.HomeController.about()">About</a></p>
+  <!-- Button per aprire la popup -->
+  <button id="openPopup">Mostra informazioni</button>
+  <!-- La popup dialog box -->
+  <div id="myPopup" class="popup">
+    <div class="popup-content">
+      <span class="close">&times;</span>
+      <h2>Informazioni importanti</h2>
+      <p>Questa è una popup dialog box per mostrare messaggi interattivi.</p>
+    </div>
+  </div>
 }
 @main("Menu") {
   <h1>Menu</h1>
