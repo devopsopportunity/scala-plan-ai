@@ -8,7 +8,28 @@ The project aims to build an organizational management application with both dyn
 
 ---
 
+### New Task Loading Demo 💻
+
+In this section, users can add new tasks to their to-do list or time tracking sheet. The interface allows users to easily input new activities and assign them relevant details for better task management. Below is a demo showing how the new tasks are added dynamically to the application.
+
+![Demo](demo.png)
+
+This functionality enhances productivity and provides an intuitive way to manage daily activities within the app.
+
+---
+
 ## Development Time Tracking ⏰
+
+**2024-12-20**
+
+| Date       | Time       | Hours Spent | Task Description                                                                                                                                                                          |
+|------------|------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 2024-12-20 | 09:00-10:30| 1.5         | Review of all tasks completed yesterday, team meeting in Scrum/Agile mode with ChatGPT 4, HR meetings, and day organization.                                                               |
+| 2024-12-20 | 15:15-16:45| 1.5         | Improved the current log page, added dynamic popup to allow users to add a new task to the to-do list with JavaScript and CSS.                                                             |
+
+---
+
+**2024-12-19**
 
 | Date       | Time  | Hours Spent | Task Description                                                                                                                                                                       |
 |------------|-------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
