@@ -12,7 +12,8 @@ The project aims to build an organizational management application with both dyn
 
 In this section, users can add new tasks to their to-do list or time tracking sheet. The interface allows users to easily input new activities and assign them relevant details for better task management. Below is a demo showing how the new tasks are added dynamically to the application.
 
-![Demo](demo.png)
+![Demo](demo1.png)
+![Demo](demo2.png)
 
 This functionality enhances productivity and provides an intuitive way to manage daily activities within the app.
 
