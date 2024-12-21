@@ -8,14 +8,28 @@ The project aims to build an organizational management application with both dyn
 
 ---
 
+Here’s the updated section:  
+
+---
+
 ### New Task Loading Demo 💻
 
-In this section, users can add new tasks to their to-do list or time tracking sheet. The interface allows users to easily input new activities and assign them relevant details for better task management. Below is a demo showing how the new tasks are added dynamically to the application.
+This Saturday, the Team has developed new functionalities to significantly improve task management and user experience. Among the updates, we’ve added the ability to manage tasks using CRUD (Create, Read, Update, Delete) operations. Additionally, **three new smart sorting buttons** were introduced:  
 
-![Demo](demo1.png)
-![Demo](demo2.png)
+1. **Standard Time Sorting**: Organizes tasks chronologically for easier tracking.  
+2. **Task Distribution Across Workday**: Distributes tasks intelligently across vital hours (9:00 AM - 11:00 PM), ensuring a balanced workload throughout the day.  
+3. **15-Minute Block Splitting**: Divides tasks into smaller, manageable intervals of 15 minutes, aiding in micro-scheduling and productivity.  
 
-This functionality enhances productivity and provides an intuitive way to manage daily activities within the app.
+These buttons include **"toast" notifications** that provide immediate feedback. A *toast* is a small, temporary, and non-intrusive notification that appears on the screen, confirming a successful action without disrupting the interface.  
+
+The interface now also features a **menu** to facilitate navigation and smart task sorting. Tasks can be dynamically rearranged between rows, ensuring an efficient alignment based on priority and temporal distribution.  
+
+Below is a demo showing how these new features enhance task loading and organization:  
+
+![Demo](demo1.png)  
+![Demo](demo2.png)  
+
+This functionality fosters productivity by providing a seamless and intuitive way to manage daily activities within the app.
 
 ---
 
@@ -23,7 +37,8 @@ This functionality enhances productivity and provides an intuitive way to manage
 
 | Date       | Time       | Hours Spent | Task Description                                                                                                                                                                                       |
 |------------|------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 2024-12-21 | 09:50-14:20| 4.5         | Added support for CRUD (Create, Read, Update, Delete) functions in task management. Implemented 3 new buttons for smart sorting: one for standard time sorting, one for distributing tasks throughout the workday (9:00 AM - 11:00 PM), and one for splitting them into 15-minute blocks. Created a menu for navigating tasks and their sorting. Also implemented intelligent movement of items between rows, adjusting their position based on priority and temporal distribution. Added two buttons that, when clicked, reorganize tasks into 16-hour time blocks (from 9:00 AM to 11:00 PM) and distribute tasks into 15-minute intervals. When the user clicks one of these buttons, a "toast" appears, which is a temporary, non-intrusive notification that confirms the action was successfully completed. The "toast" is a small notification that appears on the screen to inform the user of an event without disrupting the user interface. |
+| 2024-12-21 | 09:40-14:10| 4.5         | Added support for CRUD (Create, Read, Update, Delete) functions in task management. Implemented 3 new buttons for smart sorting: one for standard time sorting, one for distributing tasks throughout the workday (9:00 AM - 11:00 PM), and one for splitting them into 15-minute blocks. Created a menu for navigating tasks and their sorting. Also implemented intelligent movement of items between rows, adjusting their position based on priority and temporal distribution. Added two buttons that, when clicked, reorganize tasks into 16-hour time blocks (from 9:00 AM to 11:00 PM) and distribute tasks into 15-minute intervals. When the user clicks one of these buttons, a "toast" appears, which is a temporary, non-intrusive notification that confirms the action was successfully completed. The "toast" is a small notification that appears on the screen to inform the user of an event without disrupting the user interface. |
+| 2024-12-21 | 14:20-14:40| 0.5         | Updated technical documentation in the README file on GitHub and uploaded the latest modifications to the repository.                                                                                  |  
 
 **2024-12-20**
 
