@@ -49,8 +49,6 @@ This functionality fosters productivity by providing a seamless and intuitive wa
 | 2024-12-20 | 09:00-10:30| 1.5         | Review of all tasks completed yesterday, team meeting in Scrum/Agile mode with ChatGPT 4, HR meetings, and day organization.                                                               |
 | 2024-12-20 | 15:15-16:45| 1.5         | Improved the current log page, added dynamic popup to allow users to add a new task to the to-do list with JavaScript and CSS.                                                             |
 
----
-
 **2024-12-19**
 
 | Date       | Time  | Hours Spent | Task Description                                                                                                                                                                       |
