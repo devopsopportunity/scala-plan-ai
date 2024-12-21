@@ -20,6 +20,10 @@ This functionality enhances productivity and provides an intuitive way to manage
 
 ## Development Time Tracking ⏰
 
+| Date       | Time       | Hours Spent | Task Description                                                                                                                                                                                       |
+|------------|------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 2024-12-21 | 09:50-14:20| 4.5         | Added support for CRUD (Create, Read, Update, Delete) functions in task management. Implemented 3 new buttons for smart sorting: one for standard time sorting, one for distributing tasks throughout the workday (9:00 AM - 11:00 PM), and one for splitting them into 15-minute blocks. Created a menu for navigating tasks and their sorting. Also implemented intelligent movement of items between rows, adjusting their position based on priority and temporal distribution. Added two buttons that, when clicked, reorganize tasks into 16-hour time blocks (from 9:00 AM to 11:00 PM) and distribute tasks into 15-minute intervals. When the user clicks one of these buttons, a "toast" appears, which is a temporary, non-intrusive notification that confirms the action was successfully completed. The "toast" is a small notification that appears on the screen to inform the user of an event without disrupting the user interface. |
+
 **2024-12-20**
 
 | Date       | Time       | Hours Spent | Task Description                                                                                                                                                                          |
