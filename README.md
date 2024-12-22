@@ -8,24 +8,22 @@ The project aims to build an organizational management application with both dyn
 
 ---
 
-Here’s the updated section:  
-
----
-
 ### New Task Loading Demo 💻
 
 This Saturday, the Team has developed new functionalities to significantly improve task management and user experience. Among the updates, we’ve added the ability to manage tasks using CRUD (Create, Read, Update, Delete) operations. Additionally, **three new smart sorting buttons** were introduced:  
 
 1. **Standard Time Sorting**: Organizes tasks chronologically for easier tracking.  
 2. **Task Distribution Across Workday**: Distributes tasks intelligently across vital hours (9:00 AM - 11:00 PM), ensuring a balanced workload throughout the day.  
-3. **15-Minute Block Splitting**: Divides tasks into smaller, manageable intervals of 15 minutes, aiding in micro-scheduling and productivity.  
+3. **15-Minute Block Splitting**: Divides tasks into smaller, manageable intervals of 15 minutes, aiding in micro-scheduling and productivity.
 
-These buttons include **"toast" notifications** that provide immediate feedback. A *toast* is a small, temporary, and non-intrusive notification that appears on the screen, confirming a successful action without disrupting the interface.  
+These buttons include **"toast" notifications** that provide immediate feedback. A *toast* is a small, temporary, and non-intrusive notification that appears on the screen, confirming a successful action without disrupting the interface.
+The interface now also features a **menu** to facilitate navigation and smart task sorting. Tasks can be dynamically rearranged between rows, ensuring an efficient alignment based on priority and temporal distribution.
 
-The interface now also features a **menu** to facilitate navigation and smart task sorting. Tasks can be dynamically rearranged between rows, ensuring an efficient alignment based on priority and temporal distribution.  
+Additionally, a **Save Button** has been added, allowing users to save tasks and activities in YAML format, providing a convenient way to archive and retrieve their schedules.
 
-Below is a demo showing how these new features enhance task loading and organization:  
+Below is a demo showing how these new features enhance task loading and organization:
 
+![Demo](demo_save_1.png)
 ![Demo](demo1.png)  
 ![Demo](demo2.png)  
 
