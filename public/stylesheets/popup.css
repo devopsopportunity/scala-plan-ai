@@ -134,6 +134,7 @@ li:hover {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    padding-right: 24px; /* Spazio per l'icona */  
 }
 .text-editor {
     width: 100%;
@@ -141,4 +142,11 @@ li:hover {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
+}
+
+.timestamp, .activity-text {
+    cursor: pointer !important;
+}
+input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
 }
