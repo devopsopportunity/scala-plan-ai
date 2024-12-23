@@ -108,22 +108,23 @@ document.addEventListener("DOMContentLoaded", function () {
             const emoji = item.querySelector('.emoji').textContent;
             const description = item.querySelector('.activity-text').textContent;
 
+            // Combina emoji e descrizione in un unico campo
+            const combinedDescription = `${emoji} ${description}`;
+
             return {
                 time: time,
-                emoji: emoji,
-                description: description
+                description: combinedDescription
             };
         });
 
         // Crea un oggetto con il titolo e il nome del file
         const date = new Date();
-        const title = `Oggi ${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()} alle ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`; // Titolo con la data e ora in formato leggibile
-
+        const title = `Oggi ${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()} alle ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
         const fileName = `activities-${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}_${String(date.getHours()).padStart(2, '0')}-${String(date.getMinutes()).padStart(2, '0')}.yaml`;
 
         const fileContent = {
             title: title,
-            fileName: fileName,  // Aggiunto nome del file nel contenuto YAML
+            fileName: fileName,
             activities: activities
         };
 
