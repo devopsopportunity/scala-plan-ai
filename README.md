@@ -33,6 +33,12 @@ This functionality fosters productivity by providing a seamless and intuitive wa
 
 ## Development Time Tracking ⏰
 
+**2024-12-23**
+
+| Date       | Time        | Hours Spent | Task Description                                        |
+| ---------- | ----------- | ----------- | ------------------------------------------------------- |
+| 2024-12-23 | 10:00-10:20 | 0.3         | Updated saveToYAML to optimize structure and Readme    |
+
 **2024-12-22**
 
 | Date       | Time       | Hours Spent | Task Description                                                                                                                                                                                       |
