@@ -10,28 +10,53 @@ The project aims to build an organizational management application with both dyn
 
 ### New Task Loading Demo 💻
 
+This Tuesday, Christmas Eve, the Team has added the ability to view past and future logs with a user-friendly visualizer. The system now includes **"Log Passati"** (Past Logs) and **"Log Futuri"** (Future Logs) views, each equipped with a visualizer and a "back" button to navigate between the sections. If the log folders do not exist, the system will create them automatically.
+
+Below are the most recent updates:
+
+1. **Log Views**: 
+   - **Log Passati**: Displays past logs with a visualizer to help users track previous activities.
+   - **Log Futuri**: Displays upcoming tasks and logs, making it easier to plan ahead.
+   
+These new features enhance the overall user experience by making it easier to manage both past and future logs in the app.
+
+Additionally, the following features were introduced over the past week to further improve task management:
+
 This Saturday, the Team has developed new functionalities to significantly improve task management and user experience. Among the updates, we’ve added the ability to manage tasks using CRUD (Create, Read, Update, Delete) operations. Additionally, **three new smart sorting buttons** were introduced:  
 
 1. **Standard Time Sorting**: Organizes tasks chronologically for easier tracking.  
 2. **Task Distribution Across Workday**: Distributes tasks intelligently across vital hours (9:00 AM - 11:00 PM), ensuring a balanced workload throughout the day.  
 3. **15-Minute Block Splitting**: Divides tasks into smaller, manageable intervals of 15 minutes, aiding in micro-scheduling and productivity.
 
-These buttons include **"toast" notifications** that provide immediate feedback. A *toast* is a small, temporary, and non-intrusive notification that appears on the screen, confirming a successful action without disrupting the interface.
-The interface now also features a **menu** to facilitate navigation and smart task sorting. Tasks can be dynamically rearranged between rows, ensuring an efficient alignment based on priority and temporal distribution.
+These buttons include **"toast" notifications** that provide immediate feedback. A *toast* is a small, temporary, and non-intrusive notification that appears on the screen, confirming a successful action without disrupting the interface. The interface now also features a **menu** to facilitate navigation and smart task sorting. Tasks can be dynamically rearranged between rows, ensuring an efficient alignment based on priority and temporal distribution.
 
 Additionally, a **Save Button** has been added, allowing users to save tasks and activities in YAML format, providing a convenient way to archive and retrieve their schedules.
 
-Below is a demo showing how these new features enhance task loading and organization:
+Here’s a demo showcasing how these new features enhance task loading and organization:
 
-![Demo](demo_save_1.png)
+![Demo](demo_list_activities.png)  <!-- Most recent feature -->
+![Demo](demo_view_activity.png)  <!-- Second most recent feature -->
+![Demo](demo_save_1.png)  <!-- Earlier demo -->
 ![Demo](demo1.png)  
-![Demo](demo2.png)  
+![Demo](demo2.png)
 
 This functionality fosters productivity by providing a seamless and intuitive way to manage daily activities within the app.
 
 ---
 
+### Merry Christmas to All! 🎄
+
+Wishing everyone a peaceful and joyful Christmas. May this holiday season bring warmth and happiness to you and your loved ones. Enjoy the time spent with family and friends!
+
+---
+
 ## Development Time Tracking ⏰
+
+**2024-12-24**
+
+| Date       | Time        | Hours Spent | Task Description                                        |
+| ---------- | ----------- | ----------- | ------------------------------------------------------- |
+| 2024-12-24 | 13:55-17:55 | 4           | Significant development work during Christmas Eve: modified controllers, added CSS for UI enhancements, updated documentation, and implemented new log views (both past and future) with interactive visualizers. Additionally, ensured proper folder creation if they didn’t exist, maintaining smooth functionality for users. 🎄|
 
 **2024-12-23**
 
