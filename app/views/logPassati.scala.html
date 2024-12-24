@@ -1,5 +1,24 @@
+@import scala.collection.immutable.List
+
+@(message: String, lista: List[String])
+
 @main("Log Passati") {
     <p><a href="@routes.HomeController.menu()">Menu</a></p>
     <h1>Log Passati</h1>
-    <p>Qui ci saranno i log delle attività passate.</p>
+
+    @if(lista.isEmpty) {
+        <p>Non ci sono log passati al momento. Puoi tornare al menu o esplorare altre sezioni.</p>
+    } else {
+        <p>@message</p>
+        <ul>
+            @for(element <- lista) {
+                <li>
+                    <a href="@routes.HomeController.visualizzaLog(element)">
+                        @element
+                    </a>
+                </li>
+            }
+        </ul>
+    }
 }
+

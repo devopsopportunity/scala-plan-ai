@@ -1,0 +1,11 @@
+@(fileContent: String, logListUrl: String)
+
+@main("Visualizzazione Log") {
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/log.css")"> <!-- Aggiungi il CSS -->
+
+    <h1>Contenuto del Log</h1>
+    <pre>@Html(fileContent)</pre>
+    <p>
+        <a href="@logListUrl">Torna indietro</a>
+    </p>
+}

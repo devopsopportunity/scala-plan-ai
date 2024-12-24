@@ -1,5 +1,23 @@
+@import scala.collection.immutable.List
+
+@(message: String, lista: List[String])
+
 @main("Log Futuri") {
     <p><a href="@routes.HomeController.menu()">Menu</a></p>
     <h1>Log Futuri</h1>
-    <p>Qui ci saranno le previsioni o le attività future.</p>
+
+    @if(lista.isEmpty) {
+        <p>Non ci sono log futuri al momento. Qui ci saranno le attività o previsioni future, che verranno aggiunte presto.</p>
+    } else {
+        <p>@message</p>
+        <ul>
+            @for(element <- lista) {
+                <li>
+                    <a href="@routes.HomeController.visualizzaLog(element)">
+                        @element
+                    </a>
+                </li>
+            }
+        </ul>
+    }
 }
