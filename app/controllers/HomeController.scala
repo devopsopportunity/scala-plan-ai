@@ -4,9 +4,16 @@ import javax.inject._
 import play.api._
 import play.api.mvc._
 
-import java.io.File  // Importa la classe File per lavorare con i file
+import java.io.{File, FileWriter}
 import java.io.IOException
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
 import scala.io.Source  // Importa Source per leggere i file
+
+import org.yaml.snakeyaml.Yaml
+import org.yaml.snakeyaml.DumperOptions
+import org.yaml.snakeyaml.DumperOptions.Version
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -108,5 +115,84 @@ def mostraLog(tipo: String) = Action { implicit request =>
 
   // Funzione per log futuri
   def logFuturi() = mostraLog("log-futuri")
+
+  def saveActivities() = Action(parse.tolerantText) { request =>
+    // Verify content type
+    request.contentType match {
+      case Some("application/yaml") =>
+        try {
+          // Get the request body
+          val yamlData = request.body
+
+          // Create Yaml instance and load the content
+          val yaml = new Yaml()
+
+          // Parse YAML content into a Map
+          val data = yaml.load(yamlData).asInstanceOf[java.util.Map[String, Any]]
+
+          // Check if 'activities' and 'folderType' are present
+          if (data.containsKey("activities") && data.containsKey("folderType")) {
+            
+            val activities = data.get("activities")
+            val folderType = data.get("folderType")
+
+            // Generate file name and path based on folder type and current date
+            val now = LocalDateTime.now()
+            val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm")
+            val dateString = now.format(dateFormatter)
+            val fileName = s"activities-${folderType}-$dateString.yaml"
+
+            // Determine the folder where to save the file (based on folderType)
+            val projectRootPath = System.getProperty("user.dir")
+            val folderPath = s"$projectRootPath/public/mylogs/$folderType"
+            val folder = new File(folderPath)
+
+            // Create the folder if it doesn't exist
+            if (!folder.exists()) {
+              folder.mkdirs()
+            }
+
+            // Create a file object
+            val file = new File(s"$folderPath/$fileName")
+            val writer = new FileWriter(file)
+
+            // Prepare the content for YAML format using LinkedHashMap
+            val resultMap = new java.util.LinkedHashMap[String, Any]()
+
+            // Format the current date and time as "Today 23/12/2024 at 10:22"
+            val formattedDate = now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy 'at' HH:mm"))
+            resultMap.put("title", s"Today $formattedDate")
+
+            // Now put the fileName
+            resultMap.put("fileName", folderType + "/" + fileName)
+
+            // Now put the activities
+            resultMap.put("activities", activities)
+
+            // Create YAML writer with custom formatting
+            val dumperOptions = new DumperOptions()
+            dumperOptions.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK)
+            val yamlWriter = new Yaml(dumperOptions)
+
+            // Write the YAML content to the file
+            yamlWriter.dump(resultMap, writer)
+
+            writer.close()
+
+            // Respond with a success message
+            Ok(s"Activities saved successfully as: mylogs/$folderType/$fileName\n")
+          } else {
+            // Respond with an error if 'activities' or 'folderType' is missing
+            BadRequest("The fields 'activities' or 'folderType' are missing. Please provide a valid YAML structure for ScalaPlanAI.\n")
+          }
+        } catch {
+          case e: Exception =>
+            BadRequest(s"Error during YAML parsing: ${e.getMessage}\n")
+        }
+      case _ =>
+        // If the MIME type is incorrect, return an informative message
+        BadRequest("The MIME type is not the new standard RFC 9512 expected for YAML (application/yaml). This standard was introduced on February 14, 2024 ❤️. Expected MIME type: application/yaml.\n")
+    }
+  }
 
 }
