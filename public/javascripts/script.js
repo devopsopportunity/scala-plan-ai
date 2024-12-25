@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const distribute16hButton = document.getElementById("distribute16h");
     const distribute15minButton = document.getElementById("distribute15min");            
     const saveButton = document.getElementById("save");
+    const saveActivitiesCurrentButton = document.getElementById("saveActivitiesCurrent");
 
     // Funzioni di utilità per il tempo
     function timeToMinutes(timeStr) {
@@ -381,6 +382,12 @@ document.addEventListener("DOMContentLoaded", function () {
             // Mostra un toast di conferma
             showToast("Attività salvate in YAML");
         };
+
+        saveActivitiesCurrentButton.onclick = () => {
+            saveActivities('Current');
+            // Mostra un toast di conferma
+            showToast("Attività salvate in folder Current");
+        };
     }
 
     function handleTextEdit(currentText) {
@@ -421,4 +428,59 @@ document.addEventListener("DOMContentLoaded", function () {
     initializeDragAndDrop();
     initializeEventListeners();
     activityList.querySelectorAll(".list-item").forEach(addDeleteButton); 
+
+// Estrai il token CSRF dal meta tag
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+// Funzione per salvare le attività e inviare il CSRF token
+function saveActivities(folderType) {
+    console.log("csrfToken: " + csrfToken)
+    const items = [...activityList.querySelectorAll('.list-item')];
+    if (items.length === 0) return;
+
+    const activities = items.map(item => {
+        const time = item.querySelector('.timestamp').textContent;
+        const emoji = item.querySelector('.emoji').textContent;
+        const description = item.querySelector('.activity-text').textContent;
+        const combinedDescription = `${emoji} ${description}`;
+        return {
+            time: time,
+            description: combinedDescription
+        };
+    });
+
+    // Prepara i dati YAML per il POST
+    let postData = `folderType: ${folderType}\nactivities:\n`;
+    activities.forEach(activity => {
+        postData += `  - time: '${activity.time}'\n    description: ${activity.description}\n`;
+    });
+
+    fetch('/saveActivities', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/yaml'
+        },
+        body: postData,
+    })
+    .then(response => response.text())
+    .then(data => {
+        showToast(`Attività salvate con successo: ${data}`);
+    })
+    .catch(error => {
+        console.error('Errore durante il salvataggio delle attività:', error);
+        showToast("Errore durante il salvataggio delle attività");
+    });
+
+    items.forEach(item => {
+        item.style.transition = 'all 0.5s ease-in-out';
+        item.style.backgroundColor = '#f3e5f5';
+    });
+
+    setTimeout(() => {
+        items.forEach(item => {
+            item.style.backgroundColor = '';
+        });
+    }, 500);
+}
+
 }); 
