@@ -14,3 +14,6 @@ GET     /log-passati            controllers.HomeController.logPassati()
 GET     /log-corrente           controllers.HomeController.logCorrente()
 GET     /log-futuri             controllers.HomeController.logFuturi()
 GET     /log/:nomeFile          controllers.HomeController.visualizzaLog(nomeFile: String)
+
+# Route per salvare attività in formato YAML
+POST    /saveActivities          controllers.HomeController.saveActivities()
