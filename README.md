@@ -10,7 +10,9 @@ The project aims to build an organizational management application with both dyn
 
 ### New Task Loading Demo 💻
 
-Today, Christmas Day, the Team added the ability to save tasks in YAML format on the file system using a new protocol for exchanging YAML according to the **RFC 9512 standard** of February 14, 2024. The system now includes a **"Current"** folder to store and manage logs, and if the folder does not exist, it will be created automatically.
+Today, Christmas Day, the Team added the ability to save tasks in YAML format on the file system using a new protocol for exchanging YAML according to the **RFC 9512 standard** of February 14, 2024.
+[Link to YAML RFC 9512 Details](https://httptoolkit.com/blog/yaml-media-type-rfc/)
+The system now includes a **"Current"** folder to store and manage logs, and if the folder does not exist, it will be created automatically.
 
 Below are the most recent updates:
 
@@ -47,17 +49,23 @@ This functionality fosters productivity by providing a seamless and intuitive wa
 
 ### Merry Christmas to All! 🎄
 
-Wishing everyone a peaceful and joyful Christmas. May this holiday season bring warmth and happiness to you and your loved ones. Enjoy the time spent with family and friends!
+Wishing everyone a peaceful and joyful Christmas. May this holiday season bring warmth and happiness to you and your loved ones. Enjoy the time spent with family and friends!😊
 
 ---
 
 ## Development Time Tracking ⏰
 
-**2024-12-24**
+**2024-12-25**  
 
 | Date       | Time        | Hours Spent | Task Description                                        |
 | ---------- | ----------- | ----------- | ------------------------------------------------------- |
-| 2024-12-24 | 13:55-17:55 | 4           | Significant development work during Christmas Eve: modified controllers, added CSS for UI enhancements, updated documentation, and implemented new log views (both past and future) with interactive visualizers. Additionally, ensured proper folder creation if they didn’t exist, maintaining smooth functionality for users. 🎄|
+| 2024-12-25 | 16:45-21:45 | 5           | Intensive development session on Christmas Day: conducted research on YAML standards (RFC 9512), attempted configuration optimizations for new task-saving features, brainstormed improvements to folder management (focused on "Current"), tested visualizer integrations, and installed necessary dependencies. Explored potential enhancements for CRUD operations and micro-scheduling functionalities. 🎄 |
+
+**2024-12-24**  
+
+| Date       | Time        | Hours Spent | Task Description                                        |
+| ---------- | ----------- | ----------- | ------------------------------------------------------- |
+| 2024-12-24 | 13:55-17:55 | 4           | Significant development work during Christmas Eve: modified controllers, added CSS for UI enhancements, updated documentation, and implemented new log views (both past and future) with interactive visualizers. Additionally, ensured proper folder creation if they didn’t exist, maintaining smooth functionality for users. 🎄 |
 
 **2024-12-23**
 
