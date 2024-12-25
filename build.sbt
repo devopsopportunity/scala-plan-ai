@@ -15,3 +15,6 @@ libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.1
 
 // Adds additional packages into conf/routes
 // play.sbt.routes.RoutesKeys.routesImport += "com.plan.ai.binders._"
+
+// SnakeYAML
+libraryDependencies += "org.yaml" % "snakeyaml" % "2.2"
