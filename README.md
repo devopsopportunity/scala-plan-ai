@@ -10,30 +10,31 @@ The project aims to build an organizational management application with both dyn
 
 ### New Task Loading Demo 💻
 
-This Tuesday, Christmas Eve, the Team has added the ability to view past and future logs with a user-friendly visualizer. The system now includes **"Log Passati"** (Past Logs) and **"Log Futuri"** (Future Logs) views, each equipped with a visualizer and a "back" button to navigate between the sections. If the log folders do not exist, the system will create them automatically.
+Today, Christmas Day, the Team added the ability to save tasks in YAML format on the file system using a new protocol for exchanging YAML according to the **RFC 9512 standard** of February 14, 2024. The system now includes a **"Current"** folder to store and manage logs, and if the folder does not exist, it will be created automatically.
 
 Below are the most recent updates:
 
-1. **Log Views**: 
-   - **Log Passati**: Displays past logs with a visualizer to help users track previous activities.
+1. **Log Views**:  
+   - **Log Passati**: Displays past logs with a visualizer to help users track previous activities.  
    - **Log Futuri**: Displays upcoming tasks and logs, making it easier to plan ahead.
-   
+
 These new features enhance the overall user experience by making it easier to manage both past and future logs in the app.
 
 Additionally, the following features were introduced over the past week to further improve task management:
 
-This Saturday, the Team has developed new functionalities to significantly improve task management and user experience. Among the updates, we’ve added the ability to manage tasks using CRUD (Create, Read, Update, Delete) operations. Additionally, **three new smart sorting buttons** were introduced:  
+This Saturday, the Team developed new functionalities to significantly improve task management and user experience. Among the updates, we’ve added the ability to manage tasks using CRUD (Create, Read, Update, Delete) operations. Additionally, **three new smart sorting buttons** were introduced:
 
 1. **Standard Time Sorting**: Organizes tasks chronologically for easier tracking.  
 2. **Task Distribution Across Workday**: Distributes tasks intelligently across vital hours (9:00 AM - 11:00 PM), ensuring a balanced workload throughout the day.  
 3. **15-Minute Block Splitting**: Divides tasks into smaller, manageable intervals of 15 minutes, aiding in micro-scheduling and productivity.
 
-These buttons include **"toast" notifications** that provide immediate feedback. A *toast* is a small, temporary, and non-intrusive notification that appears on the screen, confirming a successful action without disrupting the interface. The interface now also features a **menu** to facilitate navigation and smart task sorting. Tasks can be dynamically rearranged between rows, ensuring an efficient alignment based on priority and temporal distribution.
+These buttons include **"toast" notifications** that provide immediate feedback. A *toast* is a small, temporary, and non-intrusive notification that appears on the screen, confirming a successful action without disrupting the interface. The interface now also features a **menu** to facilitate navigation and smart task sorting. Tasks can be dynamically rearranged between rows, ensuring efficient alignment based on priority and temporal distribution.
 
 Additionally, a **Save Button** has been added, allowing users to save tasks and activities in YAML format, providing a convenient way to archive and retrieve their schedules.
 
 Here’s a demo showcasing how these new features enhance task loading and organization:
 
+![Demo](demo_xmas.png)  <!-- Demo showcasing the features on Christmas Day -->
 ![Demo](demo_list_activities.png)  <!-- Most recent feature -->
 ![Demo](demo_view_activity.png)  <!-- Second most recent feature -->
 ![Demo](demo_save_1.png)  <!-- Earlier demo -->
