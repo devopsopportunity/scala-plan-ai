@@ -70,7 +70,7 @@ Wishing everyone a peaceful and joyful Christmas. May this holiday season bring 
 | Date       | Time        | Hours Spent | Task Description                                        |
 | ---------- | ----------- | ----------- | ------------------------------------------------------- |
 | 2024-12-26 | 15:20-17:20 | 2           | **Documentation being updated...(improved file saving + brainstorming)** 🎄 |
-| 2024-12-26 | 18:45-20:45 | 3           | **Documentation being updated...(improved pop-up activity + brainstorming)** 🎄 |
+| 2024-12-26 | 18:45-20:45 | 2           | **Documentation being updated...(improved pop-up activity + brainstorming)** 🎄 |
 
 **2024-12-25**  
 
