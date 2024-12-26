@@ -1,7 +1,10 @@
 @main("Log Corrente") {
     <!-- Header Section -->
-    <meta name="csrf-token" content="TOKEN_CSRF_VALORE">
-
+    <head>
+        <!-- <link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/activity/base-styles.css")"> -->
+        <!-- <link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/activity/popup-styles.css")"> -->
+        <link rel="stylesheet" href="@routes.Assets.versioned("/stylesheets/activity/popup.css")">
+      </head>
     <p><a href="@routes.HomeController.menu()">Menu</a></p>
     <h1>Log Corrente</h1>
     <p>Qui ci saranno le attività correnti del giorno: @java.time.LocalDate.now()</p>
@@ -9,7 +12,7 @@
     <!-- Header e sezioni precedenti invariate fino ai controlli -->
     <!-- Controls Section -->
     <div style="margin: 20px 0; display: flex; gap: 10px; flex-wrap: wrap;">
-        <button id="openPopup">Aggiungi attività</button>
+        <button id="openPopup" style="cursor: pointer;">Aggiungi attività</button>
         <button id="sortTime" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
             ⏰ Ordina per Tempo
         </button>
@@ -41,22 +44,87 @@
         <div class="popup-content">
             <span class="close">&times;</span>
             <h2>Aggiungi una nuova attività</h2>
-
-            <!-- Quick Options Section -->
-            <h3>Seleziona un'attività comune:</h3>
-            <div id="quickOptions">
+    
+            <!-- Quick Options -->
+            <h3>Scegli un'attività</h3>
+            <div class="quick-options">
                 <button class="quick-option" data-emoji="💻">💻 Lavorare</button>
                 <button class="quick-option" data-emoji="📝">📝 Pianificare</button>
                 <button class="quick-option" data-emoji="🍴">🍴 Pranzare</button>
                 <button class="quick-option" data-emoji="🏃‍♂️">🏃‍♂️ Camminare</button>
                 <button class="quick-option" data-emoji="🌙">🌙 Riflettere</button>
+                <button class="quick-option" data-emoji="📚">📚 Leggere</button>
             </div>
-
-            <!-- New Activity Input -->
-            <input type="text" id="newActivity" placeholder="Descrivi l'attività...">
-            <button id="addActivity">Aggiungi</button>
+    
+            <!-- Activity Description -->
+            <div class="form-row">
+                <div class="form-item">
+                    <h4>Descrizione</h4>
+                    <input type="text" id="newActivity" placeholder="Descrivi l'attività..." class="input-text">
+                </div>
+            </div>
+    
+            <!-- Priority and Status -->
+            <div class="form-row">
+                <div class="form-item">
+                    <h4>Priorità</h4>
+                    <select id="prioritySelector" class="input-select">
+                        <option value="low">🟩 Bassa</option>
+                        <option value="medium">🟨 Media</option>
+                        <option value="high">🟥 Alta</option>
+                        <option value="blocked">🟦 Bloccata</option>
+                    </select>
+                </div>
+                <div class="form-item">
+                    <h4>Stato</h4>
+                    <select id="flagSelector" class="input-select">
+                        <option value="🏁">🏁 Completato</option>
+                        <option value="🚩">🚩 Alta Priorità</option>
+                        <option value="🎌">🎌 Collaborativo</option>
+                        <option value="🏴">🏴 Bloccato</option>
+                        <option value="🏳">🏳 Pausa</option>
+                        <option value="🏴‍☠️">🏴‍☠️ Sperimentale</option>
+                    </select>
+                </div>
+            </div>
+    
+            <!-- Time and Duration -->
+            <div class="form-row">
+                <div class="form-item">
+                    <h4>Inizio</h4>
+                    <input type="datetime-local" id="startTime" class="input-text">
+                </div>
+                <div class="form-item">
+                    <h4>Durata (minuti)</h4>
+                    <input type="number" id="duration" placeholder="30" class="input-text">
+                </div>
+            </div>
+    
+            <!-- Temporal State -->
+            <div class="form-row">
+                <div class="form-item">
+                    <h4>Stato Temporale</h4>
+                    <p id="temporalState">🟢 Nel futuro</p>
+                </div>
+            </div>
+    
+            <!-- Add Button -->
+            <div class="form-row">
+                <button id="addActivity">Aggiungi</button>
+            </div>
         </div>
     </div>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
-    <script src="@routes.Assets.versioned("javascripts/script.js")" type="text/javascript"></script>
- }
+
+    <script src="@routes.Assets.versioned("javascripts/activity/ui-helpers.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/activity/time-management.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/activity/save-manager.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.versioned("javascripts/activity/activity-core.js")" type="text/javascript"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            ActivityCore.init();
+        });
+    </script>
+}

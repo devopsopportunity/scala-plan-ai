@@ -4,16 +4,16 @@ import javax.inject._
 import play.api._
 import play.api.mvc._
 
-import java.io.{File, FileWriter}
-import java.io.IOException
+import scala.io.Source  // Importa Source per leggere i file
+
+import java.io.{File, FileWriter, IOException}
+
+import java.util.Locale
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-import scala.io.Source  // Importa Source per leggere i file
-
-import org.yaml.snakeyaml.Yaml
-import org.yaml.snakeyaml.DumperOptions
-import org.yaml.snakeyaml.DumperOptions.Version
+import org.yaml.snakeyaml.{DumperOptions, Yaml}
+import org.yaml.snakeyaml.DumperOptions.FlowStyle
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -116,83 +116,63 @@ def mostraLog(tipo: String) = Action { implicit request =>
   // Funzione per log futuri
   def logFuturi() = mostraLog("log-futuri")
 
-  def saveActivities() = Action(parse.tolerantText) { request =>
-    // Verify content type
-    request.contentType match {
-      case Some("application/yaml") =>
-        try {
-          // Get the request body
-          val yamlData = request.body
+    def saveActivities() = Action(parse.tolerantText) { request =>
+      request.contentType match {
+        case Some("application/yaml") =>
+          try {
+            val yamlData = request.body
+            val data = new Yaml().load(yamlData).asInstanceOf[java.util.Map[String, Any]]
 
-          // Create Yaml instance and load the content
-          val yaml = new Yaml()
+            if (data.containsKey("activities")) {
+              val now = LocalDateTime.now()
 
-          // Parse YAML content into a Map
-          val data = yaml.load(yamlData).asInstanceOf[java.util.Map[String, Any]]
+              // Formatta la data e l'ora come 'yyyy-MM-dd HH:mm' per il nome del file
+              val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+              val fileName = s"activities-${now.format(dateFormatter)}.yaml"
+              
+              // Definisce la variabile 'day' come la data odierna
+              val day = now.toLocalDate.toString
 
-          // Check if 'activities' and 'folderType' are present
-          if (data.containsKey("activities") && data.containsKey("folderType")) {
-            
-            val activities = data.get("activities")
-            val folderType = data.get("folderType")
+              // Definisce il percorso della cartella per l'anno e mese corrente
+              val baseFolderPath = s"${System.getProperty("user.dir")}/public/mylogs"
+              val yearFolderPath = s"$baseFolderPath/Year ${now.getYear}"
+              val monthFolderPath = s"$yearFolderPath/${now.format(DateTimeFormatter.ofPattern("MMMM", Locale.ENGLISH))}"
 
-            // Generate file name and path based on folder type and current date
-            val now = LocalDateTime.now()
-            val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm")
-            val dateString = now.format(dateFormatter)
-            val fileName = s"activities-${folderType}-$dateString.yaml"
+              // Crea automaticamente le cartelle mancanti (mylogs, Year, Mese)
+              val monthFolder = new File(monthFolderPath)
+              monthFolder.mkdirs()  // Crea la cartella se non esiste, inclusi eventuali genitori
 
-            // Determine the folder where to save the file (based on folderType)
-            val projectRootPath = System.getProperty("user.dir")
-            val folderPath = s"$projectRootPath/public/mylogs/$folderType"
-            val folder = new File(folderPath)
+              // Crea il file dentro la cartella del mese
+              val file = new File(s"$monthFolderPath/$fileName")
+              val writer = new FileWriter(file)
 
-            // Create the folder if it doesn't exist
-            if (!folder.exists()) {
-              folder.mkdirs()
+              // Prepara la struttura dei dati da salvare nel file YAML
+              val resultMap = new java.util.LinkedHashMap[String, Any]()
+              val promptITA = "Ecco il mio piano. Puoi darmi un'analisi sullo stato attuale e suggerire come migliorare la gestione delle attività rimanenti?"
+              resultMap.put("fileName", fileName)
+              resultMap.put("prompt", promptITA)
+              resultMap.put("day", day)  // giorno pianificato
+              resultMap.put("activities", data.get("activities"))
+
+              // Scrivi i dati nel file YAML
+              val yamlWriter = new Yaml(new DumperOptions() {
+                setDefaultFlowStyle(FlowStyle.BLOCK)
+              })
+
+              yamlWriter.dump(resultMap, writer)
+              writer.close()
+
+              Ok(s"Activities saved successfully as: mylogs/Year ${now.getYear}/${now.format(DateTimeFormatter.ofPattern("MMMM", Locale.ENGLISH))}/$fileName\n")
+            } else {
+              BadRequest("The field 'activities' is missing. Please provide a valid YAML structure for ScalaPlanAI.\n")
             }
-
-            // Create a file object
-            val file = new File(s"$folderPath/$fileName")
-            val writer = new FileWriter(file)
-
-            // Prepare the content for YAML format using LinkedHashMap
-            val resultMap = new java.util.LinkedHashMap[String, Any]()
-
-            // Format the current date and time as "Today 23/12/2024 at 10:22"
-            val formattedDate = now.format(DateTimeFormatter.ofPattern("dd/MM/yyyy 'at' HH:mm"))
-            resultMap.put("title", s"Today $formattedDate")
-
-            // Now put the fileName
-            resultMap.put("fileName", folderType + "/" + fileName)
-
-            // Now put the activities
-            resultMap.put("activities", activities)
-
-            // Create YAML writer with custom formatting
-            val dumperOptions = new DumperOptions()
-            dumperOptions.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK)
-            val yamlWriter = new Yaml(dumperOptions)
-
-            // Write the YAML content to the file
-            yamlWriter.dump(resultMap, writer)
-
-            writer.close()
-
-            // Respond with a success message
-            Ok(s"Activities saved successfully as: mylogs/$folderType/$fileName\n")
-          } else {
-            // Respond with an error if 'activities' or 'folderType' is missing
-            BadRequest("The fields 'activities' or 'folderType' are missing. Please provide a valid YAML structure for ScalaPlanAI.\n")
+          } catch {
+            case e: Exception =>
+              BadRequest(s"Error during YAML parsing: ${e.getMessage}\n")
           }
-        } catch {
-          case e: Exception =>
-            BadRequest(s"Error during YAML parsing: ${e.getMessage}\n")
-        }
-      case _ =>
-        // If the MIME type is incorrect, return an informative message
-        BadRequest("The MIME type is not the new standard RFC 9512 expected for YAML (application/yaml). This standard was introduced on February 14, 2024 ❤️. Expected MIME type: application/yaml.\n")
-    }
-  }
 
+        case _ =>
+          BadRequest("The MIME type is not the new standard RFC 9512 expected for YAML (application/yaml). Expected MIME type: application/yaml.\n")
+      }
+    }
 }
