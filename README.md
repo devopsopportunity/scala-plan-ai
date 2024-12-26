@@ -10,6 +10,10 @@ The project aims to build an organizational management application with both dyn
 
 ### New Task Loading Demo 💻
 
+**Documentation being updated...**
+
+---
+
 Today, Christmas Day, the Team added the ability to save tasks in YAML format on the file system using a new protocol for exchanging YAML according to the **RFC 9512 standard** of February 14, 2024.
 [Link to YAML RFC 9512 Details](https://httptoolkit.com/blog/yaml-media-type-rfc/)
 The system now includes a **"Current"** folder to store and manage logs, and if the folder does not exist, it will be created automatically.
@@ -36,6 +40,12 @@ Additionally, a **Save Button** has been added, allowing users to save tasks and
 
 Here’s a demo showcasing how these new features enhance task loading and organization:
 
+---
+
+**Documentation being updated...**
+
+---
+
 ![Demo](demo_xmas.png)  <!-- Demo showcasing the features on Christmas Day -->
 ![Demo](demo_list_activities.png)  <!-- Most recent feature -->
 ![Demo](demo_view_activity.png)  <!-- Second most recent feature -->
@@ -54,6 +64,13 @@ Wishing everyone a peaceful and joyful Christmas. May this holiday season bring 
 ---
 
 ## Development Time Tracking ⏰
+
+**2024-12-26**  
+
+| Date       | Time        | Hours Spent | Task Description                                        |
+| ---------- | ----------- | ----------- | ------------------------------------------------------- |
+| 2024-12-26 | 15:20-17:20 | 2           | **Documentation being updated...(improved file saving + brainstorming)** 🎄 |
+| 2024-12-26 | 18:45-20:45 | 3           | **Documentation being updated...(improved pop-up activity + brainstorming)** 🎄 |
 
 **2024-12-25**  
 
