@@ -12,9 +12,9 @@ The project aims to build an organizational management application with both dyn
 
 **Documentation being updated...**
 
----
+*Latest improvements:* Bug fix and improvements on add/edit activity items, improved pop-up look and feel, added priority/status selectors, fixed data flow during edit, improved drag and drop. Additionally, several new features were added for both item management and editing. Files were separated and reorganized for better structure and efficiency.
 
-Today, Christmas Day, the Team added the ability to save tasks in YAML format on the file system using a new protocol for exchanging YAML according to the **RFC 9512 standard** of February 14, 2024.
+In the Christmas Day 🎄, the Team added the ability to save tasks in YAML format on the file system using a new protocol for exchanging YAML according to the **RFC 9512 standard** of February 14, 2024.
 [Link to YAML RFC 9512 Details](https://httptoolkit.com/blog/yaml-media-type-rfc/)
 The system now includes a **"Current"** folder to store and manage logs, and if the folder does not exist, it will be created automatically.
 
@@ -42,9 +42,14 @@ Here’s a demo showcasing how these new features enhance task loading and organ
 
 ---
 
-**Documentation being updated...**
+This functionality fosters productivity by providing a seamless and intuitive way to manage daily activities within the app.
+
+![Demo](demo_post_xmas_1.png)  <!-- Activity list and activity center -->
+![Demo](demo_post_xmas_2.png)  <!-- New pop-up look and feel -->
 
 ---
+
+*Old demos*
 
 ![Demo](demo_xmas.png)  <!-- Demo showcasing the features on Christmas Day -->
 ![Demo](demo_list_activities.png)  <!-- Most recent feature -->
