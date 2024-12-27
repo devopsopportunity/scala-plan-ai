@@ -1,6 +1,4 @@
-// Core activity management and UI initialization
 const ActivityCore = {
-    // DOM Elements
     elements: {
         activityList: document.getElementById("activityList"),
         popup: document.getElementById("myPopup"),
@@ -9,7 +7,7 @@ const ActivityCore = {
         startTimeInput: document.getElementById("startTime"),
         durationInput: document.getElementById("duration"),
         prioritySelector: document.getElementById("prioritySelector"),
-        flagSelector: document.getElementById("flagSelector"),
+        statusSelector: document.getElementById("statusSelector"),
         quickOptions: document.querySelectorAll(".quick-option"),
         sortTimeButton: document.getElementById("sortTime"),
         distribute16hButton: document.getElementById("distribute16h"),
@@ -18,121 +16,59 @@ const ActivityCore = {
         saveActivitiesCurrentButton: document.getElementById("saveActivitiesCurrent")
     },
 
+    // Initialize all necessary components and events
     init() {
-        console.log("ScalaAI loaded! 😊");
         this.initializeEventListeners();
-        // this.initializeDragAndDrop();
+        
+        // Initialize drag and drop functionality
+        DragDropManager.init(this.elements.activityList);
+        
+        // Add delete buttons to existing activities
         this.elements.activityList.querySelectorAll(".list-item").forEach(UIHelpers.addDeleteButton);
+
+        // Initialize editors for activity text and time fields
+        Editors.initializeEditors();  // Called without .call(this) for direct invocation
+
+        console.log("ScalaPlanAI loaded! 😊");
     },
 
-
-    addActivityToList(emoji, description, startTime, duration, priority, flag) {
+    // Add new activity to the list with the specified details
+    addActivityToList(emoji, description, startTime, duration, priority, status) {
         const newListItem = document.createElement("li");
         newListItem.className = "list-item";
-        newListItem.setAttribute("draggable", "true");
         newListItem.setAttribute("id", `item-${this.elements.activityList.children.length}`);
         
-        // Format duration for display
-        const durationText = duration ? `(${duration} min)` : '';
-        
+        const durationText = duration ? `(${duration} min)` : '(5 min)';
+        /* rivedere meglio: <span class='timestamp'>${startTime || TimeManagement.getCurrentTime()}</span> */
         newListItem.innerHTML = `
-            <span class='timestamp'>${startTime || TimeManagement.getCurrentTime()}</span>
+            <span class='timestamp'>${TimeManagement.getCurrentTime()}</span>
             <span class='emoji'>${emoji}</span>
             <span class='activity-text'>${description}</span>
             <span class='duration'>${durationText}</span>
             <span class='priority'>${priority || '🟩'}</span>
-            <span class='flag'>${flag || '🏁'}</span>
+            <span class='status'>${status || '🏁'}</span>
         `;
         
         UIHelpers.addDeleteButton(newListItem);
         this.elements.activityList.appendChild(newListItem);
-        this.attachDragListeners(newListItem);
+        DragDropManager.attachListeners(newListItem);
         UIHelpers.showToast("Attività aggiunta");
     },
 
-    /*
-    addActivityToList(emoji, description) {
-        const now = new Date();
-        const time = `${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}`;
-
-        const newListItem = document.createElement("li");
-        newListItem.className = "list-item";
-        newListItem.setAttribute("draggable", "true");
-        newListItem.setAttribute("id", `item-${this.elements.activityList.children.length}`);
-        // Format duration for display
-        const durationText = duration ? `(${duration} min)` : '';
-
-        newListItem.innerHTML = `
-            <span class='timestamp'>${startTime || TimeManagement.getCurrentTime()}</span>
-            <span class='emoji'>${emoji}</span>
-            <span class='activity-text'>${description}</span>
-            <span class='duration'>${durationText}</span>
-            <span class='priority'>${priority || '🟩'}</span>
-            <span class='flag'>${flag || '🏁'}</span>
-        `;
-        
-        UIHelpers.addDeleteButton(newListItem);
-        this.elements.activityList.appendChild(newListItem);
-        this.attachDragListeners(newListItem);
-        UIHelpers.showToast("Attività aggiunta");
-    },
-    */
-   
-    attachDragListeners(item) {
-        item.addEventListener('dragstart', this.handleDragStart.bind(this));
-        item.addEventListener('dragend', this.handleDragEnd.bind(this));
-        item.addEventListener('dragover', this.handleDragOver.bind(this));
-        item.addEventListener('drop', this.handleDrop.bind(this));
-    },
-
-    handleDragStart(e) {
-        e.target.classList.add('dragging');
-        e.dataTransfer.setData('text/plain', e.target.id);
-    },
-
-    handleDragEnd(e) {
-        e.target.classList.remove('dragging');
-    },
-
-    handleDragOver(e) {
-        e.preventDefault();
-    },
-
-    handleDrop(e) {
-        e.preventDefault();
-        const draggedId = e.dataTransfer.getData('text/plain');
-        const draggedElement = document.getElementById(draggedId);
-        const dropTarget = e.target.closest('.list-item');
-
-        if (dropTarget && draggedElement !== dropTarget) {
-            const list = this.elements.activityList;
-            const allItems = [...list.getElementsByClassName('list-item')];
-            const draggedPos = allItems.indexOf(draggedElement);
-            const dropPos = allItems.indexOf(dropTarget);
-
-            if (draggedPos < dropPos) {
-                dropTarget.parentNode.insertBefore(draggedElement, dropTarget.nextSibling);
-            } else {
-                dropTarget.parentNode.insertBefore(draggedElement, dropTarget);
-            }
-        }
-    },
-
+    // Set up event listeners for the various buttons and actions
     initializeEventListeners() {
-
-        // Sort button
         this.elements.sortTimeButton.onclick = TimeManagement.sortActivitiesByTime;
 
-        // Add activity button with all fields
+        // Add new activity on button click
         this.elements.addActivityButton.onclick = () => {
             const newActivity = this.elements.newActivityInput.value.trim();
             const startTime = this.elements.startTimeInput.value;
             const duration = this.elements.durationInput.value;
             const priority = this.elements.prioritySelector.value;
-            const flag = this.elements.flagSelector.value;
+            const status = this.elements.statusSelector.value;
 
             if (newActivity) {
-                this.addActivityToList("📝", newActivity, startTime, duration, priority, flag);
+                this.addActivityToList("📝", newActivity, startTime, duration, priority, status);
                 this.elements.newActivityInput.value = "";
                 this.elements.popup.style.display = "none";
             } else {
@@ -140,42 +76,50 @@ const ActivityCore = {
             }
         };
 
-        // Quick options
+        // Quick options for adding predefined activities
         this.elements.quickOptions.forEach(button => {
             button.addEventListener("click", () => {
                 const emoji = button.getAttribute("data-emoji");
                 const description = button.textContent.replace(emoji, "").trim();
-                this.addActivityToList(emoji, description);
+                const startTime = this.elements.startTimeInput.value;
+                const duration = this.elements.durationInput.value;
+                const priority = this.elements.prioritySelector.value;
+                const status = this.elements.statusSelector.value;
+                    
+                this.addActivityToList(emoji, description, startTime, duration, priority, status);
                 this.elements.popup.style.display = "none";
             });
         });
 
-        // Distribution buttons
+        // Distribute activities over 16 hours (7:00-23:00)
         this.elements.distribute16hButton.onclick = () => {
             TimeManagement.distribute16Hours();
             UIHelpers.showToast("Attività distribuite su 16 ore attive (7:00-23:00)");
         };
 
+        // Distribute activities in 15-minute blocks
         this.elements.distribute15minButton.onclick = () => {
             TimeManagement.distribute15MinBlocks();
             UIHelpers.showToast("Attività distribuite in blocchi da 15 minuti");
         };
 
-        // Save buttons
+        // Save activities to a YAML file
         this.elements.saveButton.onclick = () => {
             SaveManager.saveToYAML();
             UIHelpers.showToast("Attività salvate in YAML");
         };
 
+        // Save activities in the current folder
         this.elements.saveActivitiesCurrentButton.onclick = () => {
             SaveManager.saveActivities('Current');
             UIHelpers.showToast("Attività salvate in folder Current");
         };
 
-        // Popup controls
+        // Initialize popup controls
         this.initializePopupControls();
     },
 
+    // Set up the popup control functionality
     initializePopupControls() {
         document.getElementById("openPopup").onclick = () => this.elements.popup.style.display = "block";
         document.querySelector(".close").onclick = () => this.elements.popup.style.display = "none";

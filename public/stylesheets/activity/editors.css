@@ -1,0 +1,80 @@
+/* Editors Styles */
+.time-editor {
+    width: 70px;
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding-right: 24px; /* Spazio per l'icona */
+}
+
+.text-editor {
+    min-width: 400px;
+    width: 100%;
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.timestamp, .activity-text {
+    cursor: pointer !important;
+}
+
+input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+/* General styling for input elements */
+.text-editor,
+.time-editor,
+.duration-editor,
+.priority-editor,
+.status-editor {
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+/* Text editor input */
+.text-editor {
+    width: 100%;
+}
+
+/* Time editor input */
+.time-editor {
+    width: 120px;
+}
+
+/* Duration editor input */
+.duration-editor {
+    width: 80px;
+    text-align: right;
+}
+
+/* Priority editor input (select with emojis) */
+.priority-editor {
+    width: 60px;
+    font-size: 18px;
+    background-color: #f4f4f4;
+    border-color: #ddd;
+}
+
+.priority-editor option {
+    font-size: 18px;
+}
+
+/* Status editor input (select with emojis) */
+.status-editor {
+    width: 60px;
+    font-size: 18px;
+    background-color: #f4f4f4;
+    border-color: #ddd;
+}
+
+.status-editor option {
+    font-size: 18px;
+}

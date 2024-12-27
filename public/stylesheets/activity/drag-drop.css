@@ -1,0 +1,26 @@
+/* Specific styles for drag and drop */
+.list-item {
+    list-style-type: none;
+    cursor: grab;  /* Set cursor to 'grab' for draggable items */
+}
+
+/* During dragging */
+.list-item.dragging {
+    cursor: grabbing;  /* Set cursor to 'grabbing' while dragging */
+}
+
+/* Optional transitions and animations */
+.list-item {
+    transition: transform 0.2s ease, opacity 0.2s ease;  /* Smooth transitions for transform and opacity */
+}
+
+/* Settings for draggable items */
+.list-item[draggable="true"] {
+    /* Additional styles for draggable items */
+}
+
+/* Add pointer cursor to interactive fields (text, emoji, timestamp) */
+.list-item span {
+    cursor: pointer;  /* Set cursor to 'pointer' on clickable fields */
+    margin: 5px;       /* Add 5px margin on all sides */
+}

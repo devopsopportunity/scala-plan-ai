@@ -32,7 +32,7 @@ const UIHelpers = {
         deleteBtn.textContent = "🗑️";
         deleteBtn.onclick = () => {
             item.remove();
-            this.showToast("Attività eliminata");
+            UIHelpers.showToast("Attività eliminata");
         };
         item.appendChild(deleteBtn);
     },
