@@ -68,10 +68,17 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
    }
   }
 
+  // Metodo per mostrare la pagina dell'editor
+  def activityEditor() = Action { implicit request =>
+    Ok(views.html.activityEditor())
+  }
+
+  /*
   // Funzione per mostrare i log correnti
   def logCorrente() = Action { implicit request =>
-    Ok(views.html.logCorrente())
+      Ok(views.html.logCorrente())
   }
+  */
 
 // Funzione generica per mostrare i log
 def mostraLog(tipo: String) = Action { implicit request =>

@@ -1,0 +1,66 @@
+@(popUpTitle: String)
+
+<script src="@routes.Assets.versioned("javascripts/activity/activity-config.js")" type="text/javascript"></script>
+
+<div id="myPopup" class="popup">
+    <div class="popup-content">
+        <span class="close">&times;</span>
+        <h2>@popUpTitle</h2>
+
+        <h3>Scegli un'attività</h3>
+        <div class="quick-options">
+            <button class="quick-option" data-emoji="💻">💻 Lavorare</button>
+            <button class="quick-option" data-emoji="📝">📝 Pianificare</button>
+            <button class="quick-option" data-emoji="🍴">🍴 Pranzare</button>
+            <button class="quick-option" data-emoji="🏃‍♂️">🏃‍♂️ Camminare</button>
+            <button class="quick-option" data-emoji="🌙">🌙 Riflettere</button>
+            <button class="quick-option" data-emoji="📚">📚 Leggere</button>
+        </div>
+
+        <div class="form-row">
+            <div class="form-item">
+                <h4>Descrizione</h4>
+                <input type="text" id="newActivity" placeholder="Es. 💼 Lavoro, 🎉 Tempo libero" class="input-text">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-item">
+                <h4>Priorità</h4>
+                <select id="prioritySelector" class="input-select"></select>
+            </div>
+            <div class="form-item">
+                <h4>Stato</h4>
+                <select id="statusSelector" class="input-select"></select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-item">
+                <h4>Inizio</h4>
+                <input type="datetime-local" id="startTime" class="input-text">
+            </div>
+            <div class="form-item">
+                <h4>Durata (minuti)</h4>
+                <input type="number" id="duration" placeholder="Es. 30" class="input-text" value="30">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-item">
+                <h4>Stato Temporale</h4>
+                <p id="temporalState">🟢 Nel futuro</p>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <button id="addActivity">Aggiungi</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        ActivityConfig.init();;
+    });
+</script>
