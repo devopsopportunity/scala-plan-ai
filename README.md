@@ -65,14 +65,22 @@ Wishing everyone a peaceful and joyful Christmas. May this holiday season bring 
 
 ## Development Time Tracking ⏰
 
-**2024-12-26**  
+**2024-12-27**
 
 | Date       | Time        | Hours Spent | Task Description                                        |
 | ---------- | ----------- | ----------- | ------------------------------------------------------- |
-| 2024-12-26 | 15:20-17:20 | 2           | **Documentation being updated...(improved file saving + brainstorming)** 🎄 |
-| 2024-12-26 | 18:45-20:45 | 2           | **Documentation being updated...(improved pop-up activity + brainstorming)** 🎄 |
+| 2024-12-27 | 10:10-14:10 | 4           | Bug fix and improvements on add/edit activity items     |
+| 2024-12-27 | 16:30-19:30 | 3           | Bug fix and improvements on add/edit activity items + improved pop-up look and feel + added priority/status selectors + fixed data flow during edit + improved drag and drop |
+| 2024-12-27 | 19:30-20:00 | 0.5         | Documentation update and file reorganization (removed old files) |
 
-**2024-12-25**  
+**2024-12-26**
+
+| Date       | Time        | Hours Spent | Task Description                                        |
+| ---------- | ----------- | ----------- | ------------------------------------------------------- |
+| 2024-12-26 | 15:20-17:20 | 2           | Bug fix and improvements on add/edit activity items + improved file saving + brainstorming 🎄 |
+| 2024-12-26 | 18:45-20:45 | 2           | Bug fix and improvements on add/edit activity items + improved pop-up + brainstorming 🎄 |
+
+**2024-12-25**
 
 | Date       | Time        | Hours Spent | Task Description                                        |
 | ---------- | ----------- | ----------- | ------------------------------------------------------- |
