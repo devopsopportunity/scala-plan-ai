@@ -10,9 +10,11 @@ The project aims to build an organizational management application with both dyn
 
 ### New Task Loading Demo 💻
 
-**Documentation being updated...**
+*Latest improvements:* Layout updated, bug fixes, selector improvements, parameter passing, activity table layout, dynamic JS data loading, quick options callback.
 
-*Latest improvements:* Bug fix and improvements on add/edit activity items, improved pop-up look and feel, added priority/status selectors, fixed data flow during edit, improved drag and drop. Additionally, several new features were added for both item management and editing. Files were separated and reorganized for better structure and efficiency.
+---
+
+Bug fix and improvements on add/edit activity items, improved pop-up look and feel, added priority/status selectors, fixed data flow during edit, improved drag and drop. Additionally, several new features were added for both item management and editing. Files were separated and reorganized for better structure and efficiency.
 
 In the Christmas Day 🎄, the Team added the ability to save tasks in YAML format on the file system using a new protocol for exchanging YAML according to the **RFC 9512 standard** of February 14, 2024.
 [Link to YAML RFC 9512 Details](https://httptoolkit.com/blog/yaml-media-type-rfc/)
@@ -44,13 +46,15 @@ Here’s a demo showcasing how these new features enhance task loading and organ
 
 This functionality fosters productivity by providing a seamless and intuitive way to manage daily activities within the app.
 
-![Demo](demo_post_xmas_1.png)  <!-- Activity list and activity center -->
-![Demo](demo_post_xmas_2.png)  <!-- New pop-up look and feel -->
+![Demo](demo_28_list.png)    <!-- Activity list and activity center -->
+![Demo](demo_28_pou-up.png)  <!-- New pop-up look and feel -->
 
 ---
 
 *Old demos*
 
+![Demo](demo_post_xmas_1.png)  <!-- Activity list and activity center -->
+![Demo](demo_post_xmas_2.png)  <!-- New pop-up look and feel -->
 ![Demo](demo_xmas.png)  <!-- Demo showcasing the features on Christmas Day -->
 ![Demo](demo_list_activities.png)  <!-- Most recent feature -->
 ![Demo](demo_view_activity.png)  <!-- Second most recent feature -->
@@ -69,6 +73,14 @@ Wishing everyone a peaceful and joyful Christmas. May this holiday season bring 
 ---
 
 ## Development Time Tracking ⏰
+
+**2024-12-28**
+
+| Date       | Time        | Hours Spent | Task Description                                        |
+| ---------- | ----------- | ----------- | ------------------------------------------------------- |
+| 2024-12-28 | 11:00-12:00 | 1.0         | Layout updated, bug fixes, selector improvements, parameter passing, activity table layout, dynamic JS data loading, quick options callback. |
+| 2024-12-28 | 12:50-13:30 | 0.6         | Layout updates, bug fixes, selector improvements, parameter passing, activity table layout, dynamic JS data loading, quick options callback. |
+| 2024-12-28 | 15:30-18:50 | 3.2         | Layout updates, bug fixes, selector improvements, parameter passing, activity table layout, dynamic JS data loading, quick options callback. |
 
 **2024-12-27**
 
