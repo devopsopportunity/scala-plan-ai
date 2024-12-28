@@ -1,3 +1,4 @@
+// time-management.js
 // Time distribution and management functions
 const TimeManagement = {
     minutesToTime(minutes) {

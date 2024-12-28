@@ -1,3 +1,4 @@
+// save-manager.js
 // Save and export functionality
 const SaveManager = {
     getStatus(activityTime) {

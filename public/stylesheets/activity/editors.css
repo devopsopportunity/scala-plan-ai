@@ -78,3 +78,44 @@ input::-webkit-calendar-picker-indicator {
 .status-editor option {
     font-size: 18px;
 }
+
+/* Container principale */
+.list-item {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Spacing uniforme tra gli elementi */
+    padding: 8px;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+/* Stili comuni per tutti gli elementi inline */
+.timestamp,
+.deadline,
+.emoji,
+.duration,
+.priority,
+.status {
+    flex-shrink: 0; /* Impedisce il restringimento */
+    white-space: nowrap; /* Mantiene tutto su una riga */
+}
+
+/* Testo dell'attività */
+.activity-text {
+    flex: 1;
+    min-width: 0; /* Importante per il truncate */
+    max-width: 52ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Mostra ... quando il testo viene troncato */
+    padding-right: 8px;
+}
+
+/* Dimensioni specifiche per ogni elemento */
+.timestamp { width: 60px; }
+.deadline { width: 100px; }
+.emoji { width: 24px; text-align: center; }
+.duration { width: 80px; }
+.priority { width: 24px; text-align: center; }
+.status { width: 24px; text-align: center; }

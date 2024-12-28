@@ -1,3 +1,4 @@
+// drag-drop-manager.js
 const DragDropManager = {
     init(listElement) {
         this.listElement = listElement;

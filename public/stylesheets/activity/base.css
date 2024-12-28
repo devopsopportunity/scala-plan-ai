@@ -42,6 +42,10 @@ button {
     background-color: #2196F3;
 }
 
+#distributeRemainingHours {
+    background-color: #3F51B5;
+}
+
 #distribute15min {
     background-color: #9C27B0;
 }

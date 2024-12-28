@@ -1,3 +1,4 @@
+// ui-helpers.js
 // UI utilities and helper functions
 const UIHelpers = {
     showToast(message) {

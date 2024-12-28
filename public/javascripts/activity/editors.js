@@ -1,3 +1,4 @@
+// editors.js
 const Editors = {
     // Handle editing of activity text
     handleTextEdit(currentText) {
